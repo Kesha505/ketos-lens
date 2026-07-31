@@ -148,7 +148,8 @@ export default function BookingForm({ cameras, bookings, defaultCameraId, onSucc
           notes: notes.trim(),
         });
         const waUrl = `https://wa.me/${KETOS_WA}?text=${encodeURIComponent(invoiceText)}`;
-        window.open(waUrl, "_blank", "noopener,noreferrer");
+        // Menggunakan window.location.href agar tidak diblokir oleh popup blocker di mobile/desktop
+        window.location.href = waUrl;
 
         setSuccess(true);
         setName(""); setPhone(""); setNotes(""); setStartDate(""); setEndDate("");
