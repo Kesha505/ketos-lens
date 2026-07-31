@@ -22,11 +22,11 @@
 }
 
 .stepNum {
-  width: 24px;
-  height: 24px;
+  width: 26px;
+  height: 26px;
   border-radius: 50%;
-  background: linear-gradient(135deg, var(--gold), var(--gold-dark));
-  color: #0a0e1a;
+  background: linear-gradient(135deg, var(--blue), var(--blue-dark));
+  color: #fff;
   font-size: 0.75rem;
   font-weight: 800;
   display: flex;
@@ -35,41 +35,21 @@
   flex-shrink: 0;
 }
 
-/* Camera options */
-.cameraOptions {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 12px;
-}
-
-.camOption {
+/* Camera locked */
+.cameraLocked {
   display: flex;
-  flex-direction: column;
   align-items: center;
-  gap: 6px;
-  padding: 18px 16px;
-  background: var(--navy-2);
-  border: 1px solid var(--border-soft);
+  gap: 12px;
+  padding: 16px 20px;
+  background: rgba(59,130,246,0.06);
+  border: 1px solid rgba(59,130,246,0.2);
   border-radius: var(--radius);
-  cursor: pointer;
-  transition: all 0.2s;
-  font-size: 0.85rem;
-}
-
-.camOption:hover {
-  border-color: var(--border);
-  background: rgba(201,168,76,0.06);
-}
-
-.camSelected {
-  border-color: var(--gold) !important;
-  background: rgba(201,168,76,0.1) !important;
-  box-shadow: 0 0 0 1px rgba(201,168,76,0.2);
+  font-size: 0.9rem;
 }
 
 .camIcon {
-  font-size: 1.5rem;
-  color: var(--gold);
+  font-size: 1.4rem;
+  color: var(--blue);
 }
 
 .camName {
@@ -82,16 +62,34 @@
   color: var(--text-muted);
 }
 
-/* Locked camera display (when form is pre-assigned to one camera) */
-.cameraLocked {
-  display: flex;
-  align-items: center;
+/* Camera options (fallback) */
+.cameraOptions {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
   gap: 12px;
-  padding: 16px 20px;
-  background: rgba(201,168,76,0.07);
-  border: 1px solid rgba(201,168,76,0.25);
+}
+
+.camOption {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  padding: 18px 16px;
+  background: var(--bg-2);
+  border: 1px solid var(--border-soft);
   border-radius: var(--radius);
-  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-size: 0.85rem;
+}
+.camOption:hover {
+  border-color: var(--border);
+  background: rgba(59,130,246,0.04);
+}
+.camSelected {
+  border-color: var(--blue) !important;
+  background: rgba(59,130,246,0.08) !important;
+  box-shadow: 0 0 0 1px rgba(59,130,246,0.2);
 }
 
 /* Duration */
@@ -106,51 +104,37 @@
   flex-direction: column;
   align-items: center;
   gap: 4px;
-  padding: 16px;
-  background: var(--navy-2);
+  padding: 18px;
+  background: var(--bg-2);
   border: 1px solid var(--border-soft);
   border-radius: var(--radius);
   cursor: pointer;
-  transition: all 0.2s;
+  transition: all 0.25s;
 }
-
 .durationBtn:hover {
-  border-color: var(--border);
+  border-color: var(--border-hover);
 }
 
 .durationSelected {
-  border-color: var(--gold) !important;
-  background: rgba(201,168,76,0.1) !important;
+  border-color: var(--blue) !important;
+  background: rgba(59,130,246,0.08) !important;
+  box-shadow: 0 0 0 1px rgba(59,130,246,0.15);
 }
 
 .durationHours {
-  font-size: 1.1rem;
+  font-size: 1.15rem;
   font-weight: 800;
   color: var(--text-primary);
   font-family: 'Outfit', sans-serif;
 }
 
 .durationPrice {
-  font-size: 0.8rem;
-  color: var(--gold-light);
+  font-size: 0.82rem;
+  color: var(--blue-light);
   font-weight: 600;
 }
 
-/* Date info */
-.dateInfo {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 12px 16px;
-  background: rgba(201,168,76,0.06);
-  border: 1px solid rgba(201,168,76,0.2);
-  border-radius: var(--radius-sm);
-  font-size: 0.88rem;
-  font-weight: 500;
-  color: var(--text-secondary);
-}
-
-/* Auto-filled date fields */
+/* Date fields */
 .dateFields {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -173,32 +157,32 @@
 }
 
 .dateFieldValue {
-  padding: 11px 14px;
+  padding: 12px 14px;
   border: 1px dashed var(--border-soft);
   border-radius: var(--radius-sm);
   font-size: 0.88rem;
   color: var(--text-muted);
   background: rgba(255,255,255,0.02);
   font-style: italic;
-  transition: all 0.2s;
-  min-height: 42px;
+  transition: all 0.25s;
+  min-height: 44px;
   display: flex;
   align-items: center;
 }
 
 .dateFieldFilled {
   border-style: solid;
-  border-color: rgba(201,168,76,0.35);
-  background: rgba(201,168,76,0.06);
-  color: var(--gold-light);
+  border-color: rgba(59,130,246,0.3);
+  background: rgba(59,130,246,0.05);
+  color: var(--blue-light);
   font-style: normal;
   font-weight: 600;
 }
 
 .daysTag {
-  background: rgba(201,168,76,0.18);
-  color: var(--gold-light);
-  padding: 4px 12px;
+  background: rgba(59,130,246,0.15);
+  color: var(--blue-light);
+  padding: 5px 14px;
   border-radius: 99px;
   font-size: 0.78rem;
   font-weight: 700;
@@ -206,10 +190,10 @@
 
 /* Summary */
 .summary {
-  background: var(--navy-2);
+  background: var(--bg-2);
   border: 1px solid var(--border-soft);
   border-radius: var(--radius);
-  padding: 20px 24px;
+  padding: 22px 24px;
   display: flex;
   flex-direction: column;
   gap: 12px;
@@ -233,9 +217,12 @@
 }
 
 .totalPrice {
-  font-size: 1.2rem;
+  font-size: 1.25rem;
   font-weight: 800;
-  color: var(--gold-light);
+  background: linear-gradient(135deg, var(--blue-light), var(--cyan));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
   font-family: 'Outfit', sans-serif;
 }
 
@@ -248,11 +235,11 @@
 
 /* Error / Success */
 .errorBox {
-  background: rgba(245,101,101,0.1);
-  border: 1px solid rgba(245,101,101,0.3);
+  background: rgba(239,68,68,0.08);
+  border: 1px solid rgba(239,68,68,0.25);
   border-radius: var(--radius-sm);
   padding: 14px 18px;
-  color: #f9a5a5;
+  color: #fca5a5;
   font-size: 0.88rem;
   display: flex;
   align-items: center;
@@ -260,11 +247,11 @@
 }
 
 .successBox {
-  background: rgba(34,211,160,0.1);
-  border: 1px solid rgba(34,211,160,0.3);
+  background: rgba(34,197,94,0.08);
+  border: 1px solid rgba(34,197,94,0.25);
   border-radius: var(--radius-sm);
   padding: 14px 18px;
-  color: #5ff7c8;
+  color: #86efac;
   font-size: 0.88rem;
   display: flex;
   align-items: center;
@@ -273,41 +260,55 @@
 
 /* Submit */
 .submitBtn {
-  background: linear-gradient(135deg, var(--gold), var(--gold-dark));
-  color: #0a0e1a;
+  background: linear-gradient(135deg, var(--blue), var(--blue-dark));
+  color: #fff;
   font-weight: 800;
   padding: 16px;
   border-radius: var(--radius);
   font-size: 1rem;
   letter-spacing: 0.02em;
-  transition: all 0.25s ease;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   border: none;
   width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 10px;
-  box-shadow: 0 4px 20px rgba(201,168,76,0.3);
+  box-shadow: 0 4px 24px rgba(59,130,246,0.3);
+  position: relative;
+  overflow: hidden;
 }
-
+.submitBtn::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, var(--blue-light), var(--cyan));
+  opacity: 0;
+  transition: opacity 0.3s;
+}
 .submitBtn:hover:not(:disabled) {
   transform: translateY(-2px);
-  box-shadow: 0 8px 28px rgba(201,168,76,0.45);
+  box-shadow: 0 8px 32px rgba(59,130,246,0.45);
 }
-
+.submitBtn:hover:not(:disabled)::before {
+  opacity: 1;
+}
+.submitBtn > * {
+  position: relative;
+  z-index: 1;
+}
 .submitBtn:disabled {
-  opacity: 0.65;
+  opacity: 0.6;
   cursor: not-allowed;
 }
 
-
 .waNote {
   text-align: center;
-  font-size: 0.8rem;
+  font-size: 0.82rem;
   color: var(--text-muted);
   margin-top: -8px;
 }
 
 @media (max-width: 480px) {
-  .cameraOptions, .durationOptions { grid-template-columns: 1fr; }
+  .cameraOptions, .durationOptions, .dateFields { grid-template-columns: 1fr; }
 }

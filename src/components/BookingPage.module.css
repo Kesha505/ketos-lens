@@ -1,0 +1,231 @@
+/* Booking Page Header */
+.header {
+  position: relative;
+  padding: 140px 0 60px;
+  overflow: hidden;
+}
+
+.headerBg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.headerOrb {
+  position: absolute;
+  width: 500px; height: 500px;
+  border-radius: 50%;
+  top: -30%; right: 10%;
+  filter: blur(80px);
+}
+
+.headerContent {
+  position: relative;
+  z-index: 1;
+}
+
+.breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 24px;
+  font-size: 0.85rem;
+}
+
+.breadcrumbLink {
+  color: var(--text-muted);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.breadcrumbLink:hover {
+  color: var(--blue-light);
+}
+
+.breadcrumbSep {
+  color: var(--text-muted);
+}
+
+.breadcrumbCurrent {
+  color: var(--text-secondary);
+}
+
+.headerBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  border: 1px solid;
+  border-radius: 99px;
+  padding: 6px 18px;
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  margin-bottom: 20px;
+}
+
+.headerTitle {
+  font-size: clamp(2rem, 5vw, 3.2rem);
+  font-weight: 900;
+  letter-spacing: -0.02em;
+  margin-bottom: 16px;
+}
+
+.headerDesc {
+  font-size: 1.05rem;
+  color: var(--text-secondary);
+  max-width: 560px;
+  line-height: 1.7;
+}
+
+/* Layout */
+.main {
+  padding: 0 0 80px;
+}
+
+.layout {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 48px;
+  align-items: start;
+}
+
+/* Info Column */
+.infoCol {
+  position: sticky;
+  top: 90px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.infoCard {
+  background: var(--surface);
+  border: 1px solid var(--border-soft);
+  border-radius: var(--radius);
+  padding: 28px;
+}
+
+.infoCardTitle {
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin-bottom: 20px;
+  color: var(--text-primary);
+}
+
+.featuresList {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.featureItem {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+}
+
+.featureIcon {
+  font-size: 1.2rem;
+  width: 44px;
+  height: 44px;
+  border-radius: 10px;
+  border: 1px solid;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.featureTitle {
+  font-size: 0.92rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 3px;
+}
+
+.featureDesc {
+  font-size: 0.82rem;
+  color: var(--text-secondary);
+  line-height: 1.5;
+}
+
+/* Specs */
+.specsList {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.specItem {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.88rem;
+  color: var(--text-secondary);
+}
+
+.specCheck {
+  font-weight: 800;
+  font-size: 0.9rem;
+}
+
+/* Form Column */
+.formCol {
+  /* no special styles */
+}
+
+.formCard {
+  background: var(--surface);
+  border: 1px solid var(--border-soft);
+  border-radius: var(--radius-lg);
+  padding: 36px;
+}
+
+.formCardHeader {
+  margin-bottom: 28px;
+}
+
+.formCardTitle {
+  font-size: 1.4rem;
+  font-weight: 800;
+  margin-bottom: 8px;
+}
+
+.formCardSub {
+  font-size: 0.92rem;
+  color: var(--text-secondary);
+}
+
+/* Skeleton */
+.skeleton {
+  height: 600px;
+  border-radius: var(--radius);
+  background: linear-gradient(90deg, var(--surface) 25%, var(--surface-2) 50%, var(--surface) 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+}
+
+/* Empty State */
+.emptyState {
+  padding: 40px;
+  text-align: center;
+  color: var(--text-secondary);
+  border: 1px dashed var(--border-soft);
+  border-radius: var(--radius);
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .layout {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+  .infoCol {
+    position: static;
+  }
+}
+
+@media (max-width: 600px) {
+  .header { padding: 120px 0 40px; }
+  .formCard { padding: 24px; }
+  .specsList { grid-template-columns: 1fr; }
+}

@@ -1,36 +1,82 @@
 "use client";
 
+import { useState } from "react";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 import styles from "./Navbar.module.css";
 
+const NAV_LINKS = [
+  { href: "/", label: "Beranda" },
+  { href: "/booking/x4", label: "Insta360 X4" },
+  { href: "/booking/x5", label: "Insta360 X5" },
+  { href: "/#pricing", label: "Harga" },
+];
+
 export default function Navbar() {
-  const scrollTo = (id: string) => {
-    document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
-  };
+  const pathname = usePathname();
+  const [mobileOpen, setMobileOpen] = useState(false);
 
   return (
     <nav className={styles.nav}>
       <div className={styles.inner}>
-        <div className={styles.logo}>
+        <Link href="/" className={styles.logo}>
           <span className={styles.logoIcon}>◉</span>
           <span className={styles.logoText}>
             Ketos<span className={styles.logoAccent}>Lens</span>
           </span>
-        </div>
+        </Link>
 
+        {/* Desktop Nav */}
         <div className={styles.links}>
-          <button onClick={() => scrollTo("cameras")} className={styles.link}>Kamera</button>
-          <button onClick={() => scrollTo("booking")} className={styles.link}>Booking</button>
-          <button onClick={() => scrollTo("pricing")} className={styles.link}>Harga</button>
+          {NAV_LINKS.map((link) => (
+            <Link
+              key={link.href}
+              href={link.href}
+              className={`${styles.link} ${pathname === link.href ? styles.linkActive : ""}`}
+            >
+              {link.label}
+            </Link>
+          ))}
         </div>
 
+        <Link href="/booking/x4" className={`btn-primary ${styles.ctaBtn}`}>
+          <span>Booking Sekarang</span>
+        </Link>
+
+        {/* Mobile Hamburger */}
         <button
-          onClick={() => scrollTo("booking")}
-          className="btn-primary"
-          style={{ fontSize: "0.85rem", padding: "10px 22px" }}
+          className={`${styles.hamburger} ${mobileOpen ? styles.hamburgerOpen : ""}`}
+          onClick={() => setMobileOpen(!mobileOpen)}
+          aria-label="Toggle menu"
         >
-          Booking Sekarang
+          <span />
+          <span />
+          <span />
         </button>
       </div>
+
+      {/* Mobile Menu */}
+      {mobileOpen && (
+        <div className={styles.mobileMenu}>
+          {NAV_LINKS.map((link) => (
+            <Link
+              key={link.href}
+              href={link.href}
+              className={`${styles.mobileLink} ${pathname === link.href ? styles.mobileLinkActive : ""}`}
+              onClick={() => setMobileOpen(false)}
+            >
+              {link.label}
+            </Link>
+          ))}
+          <Link
+            href="/booking/x4"
+            className={`btn-primary ${styles.mobileCta}`}
+            onClick={() => setMobileOpen(false)}
+          >
+            <span>Booking Sekarang</span>
+          </Link>
+        </div>
+      )}
     </nav>
   );
 }
