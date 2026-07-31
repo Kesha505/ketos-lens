@@ -36,25 +36,20 @@ function buildInvoiceText(opts: {
   totalPrice: number;
   notes: string;
 }) {
-  const dp = Math.round(opts.totalPrice / 2);
-
   return (
 `📸 FORMULIR BOOKING SEWA INSTA360 ${opts.model} – KETOS LENS
 
 Terima kasih telah mempercayakan kebutuhan dokumentasi Anda kepada Ketos Lens.
 Untuk mengamankan jadwal sewa, penyewa wajib melakukan DP sebesar 50%.
 
-Nama Penyewa        : ${opts.name}
+Nama Penyewa : ${opts.name}
 Tanggal Pengambilan : ${formatDateID(opts.startDate)}
-Tanggal Pengembalian: ${formatDateID(opts.endDate)}
-Unit Kamera         : Insta360 ${opts.model}
-Durasi              : ${opts.duration} Jam × ${opts.totalDays} Hari
-Total Harga         : ${formatRupiah(opts.totalPrice)}
-DP 50%              : ${formatRupiah(dp)}
-Status Pembayaran   : DP 50% / Lunas
-Jaminan             :${opts.notes ? `\nCatatan             : ${opts.notes}` : ""}
+Tanggal Pengembalian : ${formatDateID(opts.endDate)}
+Unit Kamera : Insta360 ${opts.model}
+Status Pembayaran : DP 50% / Lunas
+Jaminan : ${opts.notes}
 
-──────────────────────────
+⸻
 
 📋 Syarat & Ketentuan Sewa
 
@@ -70,9 +65,9 @@ Jaminan             :${opts.notes ? `\nCatatan             : ${opts.notes}` : ""
 
 ✅ DP yang sudah dibayarkan tidak dapat dikembalikan (non-refundable) apabila penyewa membatalkan booking pada hari pengambilan atau setelah jadwal sewa telah dikonfirmasi.
 
-〰️   BCA
+~   BCA
 4350599741
-A/N DEWA GEDE DHALEM KESHANANDA`
+  A/N DEWA GEDE DHALEM KESHANANDA`
   );
 }
 
