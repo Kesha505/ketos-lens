@@ -1,0 +1,313 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+.step {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.stepLabel {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+}
+
+.stepNum {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+  color: #0a0e1a;
+  font-size: 0.75rem;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+/* Camera options */
+.cameraOptions {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.camOption {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  padding: 18px 16px;
+  background: var(--navy-2);
+  border: 1px solid var(--border-soft);
+  border-radius: var(--radius);
+  cursor: pointer;
+  transition: all 0.2s;
+  font-size: 0.85rem;
+}
+
+.camOption:hover {
+  border-color: var(--border);
+  background: rgba(201,168,76,0.06);
+}
+
+.camSelected {
+  border-color: var(--gold) !important;
+  background: rgba(201,168,76,0.1) !important;
+  box-shadow: 0 0 0 1px rgba(201,168,76,0.2);
+}
+
+.camIcon {
+  font-size: 1.5rem;
+  color: var(--gold);
+}
+
+.camName {
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.camPrice {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+}
+
+/* Locked camera display (when form is pre-assigned to one camera) */
+.cameraLocked {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px 20px;
+  background: rgba(201,168,76,0.07);
+  border: 1px solid rgba(201,168,76,0.25);
+  border-radius: var(--radius);
+  font-size: 0.9rem;
+}
+
+/* Duration */
+.durationOptions {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.durationBtn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  padding: 16px;
+  background: var(--navy-2);
+  border: 1px solid var(--border-soft);
+  border-radius: var(--radius);
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.durationBtn:hover {
+  border-color: var(--border);
+}
+
+.durationSelected {
+  border-color: var(--gold) !important;
+  background: rgba(201,168,76,0.1) !important;
+}
+
+.durationHours {
+  font-size: 1.1rem;
+  font-weight: 800;
+  color: var(--text-primary);
+  font-family: 'Outfit', sans-serif;
+}
+
+.durationPrice {
+  font-size: 0.8rem;
+  color: var(--gold-light);
+  font-weight: 600;
+}
+
+/* Date info */
+.dateInfo {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 16px;
+  background: rgba(201,168,76,0.06);
+  border: 1px solid rgba(201,168,76,0.2);
+  border-radius: var(--radius-sm);
+  font-size: 0.88rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+}
+
+/* Auto-filled date fields */
+.dateFields {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-top: 4px;
+}
+
+.dateField {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.dateFieldLabel {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.dateFieldValue {
+  padding: 11px 14px;
+  border: 1px dashed var(--border-soft);
+  border-radius: var(--radius-sm);
+  font-size: 0.88rem;
+  color: var(--text-muted);
+  background: rgba(255,255,255,0.02);
+  font-style: italic;
+  transition: all 0.2s;
+  min-height: 42px;
+  display: flex;
+  align-items: center;
+}
+
+.dateFieldFilled {
+  border-style: solid;
+  border-color: rgba(201,168,76,0.35);
+  background: rgba(201,168,76,0.06);
+  color: var(--gold-light);
+  font-style: normal;
+  font-weight: 600;
+}
+
+.daysTag {
+  background: rgba(201,168,76,0.18);
+  color: var(--gold-light);
+  padding: 4px 12px;
+  border-radius: 99px;
+  font-size: 0.78rem;
+  font-weight: 700;
+}
+
+/* Summary */
+.summary {
+  background: var(--navy-2);
+  border: 1px solid var(--border-soft);
+  border-radius: var(--radius);
+  padding: 20px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.summaryRow {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+}
+
+.divider {
+  height: 1px;
+  background: var(--border-soft);
+}
+
+.summaryTotal {
+  color: var(--text-primary) !important;
+  font-weight: 700;
+}
+
+.totalPrice {
+  font-size: 1.2rem;
+  font-weight: 800;
+  color: var(--gold-light);
+  font-family: 'Outfit', sans-serif;
+}
+
+/* Fields */
+.fields {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* Error / Success */
+.errorBox {
+  background: rgba(245,101,101,0.1);
+  border: 1px solid rgba(245,101,101,0.3);
+  border-radius: var(--radius-sm);
+  padding: 14px 18px;
+  color: #f9a5a5;
+  font-size: 0.88rem;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.successBox {
+  background: rgba(34,211,160,0.1);
+  border: 1px solid rgba(34,211,160,0.3);
+  border-radius: var(--radius-sm);
+  padding: 14px 18px;
+  color: #5ff7c8;
+  font-size: 0.88rem;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* Submit */
+.submitBtn {
+  background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+  color: #0a0e1a;
+  font-weight: 800;
+  padding: 16px;
+  border-radius: var(--radius);
+  font-size: 1rem;
+  letter-spacing: 0.02em;
+  transition: all 0.25s ease;
+  border: none;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  box-shadow: 0 4px 20px rgba(201,168,76,0.3);
+}
+
+.submitBtn:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 28px rgba(201,168,76,0.45);
+}
+
+.submitBtn:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+}
+
+
+.waNote {
+  text-align: center;
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  margin-top: -8px;
+}
+
+@media (max-width: 480px) {
+  .cameraOptions, .durationOptions { grid-template-columns: 1fr; }
+}

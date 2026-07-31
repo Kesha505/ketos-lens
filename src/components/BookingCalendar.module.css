@@ -1,0 +1,144 @@
+.calendar {
+  background: var(--navy-2);
+  border: 1px solid var(--border-soft);
+  border-radius: var(--radius);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.navBtn {
+  background: rgba(255,255,255,0.05);
+  border: 1px solid var(--border-soft);
+  border-radius: 8px;
+  color: var(--text-secondary);
+  font-size: 1.2rem;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.18s;
+  line-height: 1;
+}
+.navBtn:hover {
+  border-color: var(--border);
+  color: var(--gold);
+  background: rgba(201,168,76,0.08);
+}
+
+.monthLabel {
+  font-family: 'Outfit', sans-serif;
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.dayNames {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 2px;
+  margin-bottom: 4px;
+}
+
+.dayName {
+  text-align: center;
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  padding: 4px 0;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 3px;
+}
+
+.day {
+  aspect-ratio: 1;
+  border: none;
+  border-radius: 8px;
+  background: transparent;
+  color: var(--text-primary);
+  font-size: 0.85rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.15s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+.day:hover:not(:disabled) {
+  background: rgba(201,168,76,0.15);
+  color: var(--gold-light);
+}
+
+.today {
+  outline: 1px solid rgba(201,168,76,0.4);
+  outline-offset: -1px;
+}
+
+.past {
+  color: var(--text-muted) !important;
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.booked {
+  background: rgba(245,101,101,0.15) !important;
+  color: var(--error) !important;
+  text-decoration: line-through;
+  cursor: not-allowed;
+}
+
+.inRange {
+  background: rgba(201,168,76,0.15);
+  color: var(--gold-light);
+  border-radius: 0;
+}
+
+.rangeEnd {
+  background: linear-gradient(135deg, var(--gold), var(--gold-dark)) !important;
+  color: #0a0e1a !important;
+  font-weight: 800 !important;
+  border-radius: 8px !important;
+  box-shadow: 0 2px 8px rgba(201,168,76,0.4);
+}
+
+/* Legend */
+.legend {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding-top: 8px;
+  border-top: 1px solid var(--border-soft);
+}
+
+.legendItem {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}
+
+.dot {
+  width: 10px; height: 10px;
+  border-radius: 3px;
+  display: inline-block;
+}
+.dotAvail { background: rgba(255,255,255,0.12); }
+.dotBooked { background: rgba(245,101,101,0.5); }
+.dotRange { background: rgba(201,168,76,0.5); }
