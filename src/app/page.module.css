@@ -52,6 +52,16 @@
   max-width: 760px;
 }
 
+.heroLogoWrapper {
+  margin-bottom: 24px;
+}
+
+.heroLogo {
+  border-radius: 50%;
+  box-shadow: 0 0 40px rgba(59,130,246,0.2);
+  border: 1px solid rgba(59,130,246,0.2);
+}
+
 .heroBadge {
   display: inline-flex;
   align-items: center;
@@ -258,6 +268,14 @@
   font-size: 0.85rem;
   color: var(--text-secondary);
   padding: 6px 0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.featureIcon {
+  color: var(--blue-light);
+  flex-shrink: 0;
 }
 
 .cameraPrices {
@@ -444,8 +462,20 @@
   right: 24px;
 }
 
+.stepIconWrap {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: rgba(59, 130, 246, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--blue-light);
+  margin-bottom: 8px;
+}
+
 .stepIcon {
-  font-size: 1.6rem;
+  color: inherit;
 }
 
 .stepTitle {
