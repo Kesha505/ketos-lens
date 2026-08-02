@@ -8,6 +8,8 @@ import styles from "./BookingForm.module.css";
 // ── Nomor WhatsApp Ketos Lens (tanpa +) ──────────────────────────────────────
 const KETOS_WA = "6285903685028";
 
+import { useRouter } from "next/navigation";
+
 interface Props {
   cameras: Camera[];
   bookings: Booking[];
@@ -25,51 +27,7 @@ function formatDateID(dateStr: string) {
   return d.toLocaleDateString("id-ID", { day: "2-digit", month: "long", year: "numeric" });
 }
 
-/** Buat teks invoice WhatsApp */
-function buildInvoiceText(opts: {
-  model: string;
-  name: string;
-  startDate: string;
-  endDate: string;
-  duration: string;
-  totalDays: number;
-  totalPrice: number;
-  notes: string;
-}) {
-  return (
-`📸 FORMULIR BOOKING SEWA INSTA360 ${opts.model} – KETOS LENS
-
-Terima kasih telah mempercayakan kebutuhan dokumentasi Anda kepada Ketos Lens.
-Untuk mengamankan jadwal sewa, penyewa wajib melakukan DP sebesar 50%.
-
-Nama Penyewa : ${opts.name}
-Tanggal Pengambilan : ${formatDateID(opts.startDate)}
-Tanggal Pengembalian : ${formatDateID(opts.endDate)}
-Unit Kamera : Insta360 ${opts.model}
-Status Pembayaran : DP 50% / Lunas
-Jaminan : ${opts.notes}
-
-⸻
-
-📋 Syarat & Ketentuan Sewa
-
-✅ Penyewa wajib menyerahkan 2 identitas asli yang masih berlaku sebagai jaminan (KTP/SIM/STNK) dan merupakan milik pribadi.
-
-✅ Penyewa bersedia dilakukan dokumentasi foto saat proses serah terima unit.
-
-✅ Selama masa penyewaan, seluruh tanggung jawab atas kehilangan, kerusakan, maupun kelalaian penggunaan unit menjadi tanggung jawab penuh penyewa.
-
-✅ Waktu pengembalian memiliki toleransi keterlambatan maksimal 1 jam. Apabila melebihi batas tersebut, akan dikenakan denda Rp20.000/jam.
-
-✅ Booking dinyatakan aktif setelah DP diterima.
-
-✅ DP yang sudah dibayarkan tidak dapat dikembalikan (non-refundable) apabila penyewa membatalkan booking pada hari pengambilan atau setelah jadwal sewa telah dikonfirmasi.
-
-~   BCA
-4350599741
-  A/N DEWA GEDE DHALEM KESHANANDA`
-  );
-}
+// Import useRouter inside the component, invoice logic moved to payment page
 
 export default function BookingForm({ cameras, bookings, defaultCameraId, onSuccess }: Props) {
   const [cameraId, setCameraId] = useState<string | number>(defaultCameraId || cameras[0]?.id || "");
@@ -82,6 +40,7 @@ export default function BookingForm({ cameras, bookings, defaultCameraId, onSucc
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
   const [success, setSuccess] = useState(false);
+  const router = useRouter();
 
   useEffect(() => {
     if (defaultCameraId) {
@@ -136,21 +95,18 @@ export default function BookingForm({ cameras, bookings, defaultCameraId, onSucc
       if (!res.ok) {
         setError(data.error || "Terjadi kesalahan.");
       } else {
-        // ── Sukses: buka WhatsApp dengan invoice ──────────────────────────
-        const invoiceText = buildInvoiceText({
+        const query = new URLSearchParams({
           model,
           name: name.trim(),
-          startDate,
-          endDate: effectiveEnd,
+          start: startDate,
+          end: effectiveEnd,
           duration,
-          totalDays: days,
-          totalPrice,
-          notes: notes.trim(),
+          days: days.toString(),
+          price: totalPrice.toString(),
+          notes: notes.trim()
         });
-        const waUrl = `https://wa.me/${KETOS_WA}?text=${encodeURIComponent(invoiceText)}`;
-        // Menggunakan window.location.href agar tidak diblokir oleh popup blocker di mobile/desktop
-        window.location.href = waUrl;
-
+        
+        router.push(`/payment?${query.toString()}`);
         setSuccess(true);
         setName(""); setPhone(""); setNotes(""); setStartDate(""); setEndDate("");
         onSuccess();
@@ -347,7 +303,7 @@ export default function BookingForm({ cameras, bookings, defaultCameraId, onSucc
       </button>
 
       <p className={styles.waNote}>
-        📲 Setelah klik tombol, WhatsApp akan terbuka otomatis dengan invoice lengkap.
+        💳 Setelah klik tombol, Anda akan diarahkan ke halaman pembayaran.
       </p>
     </form>
   );
